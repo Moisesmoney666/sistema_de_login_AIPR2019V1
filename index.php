@@ -7,6 +7,15 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
         <title>Sistema de Login TNX Systems</title>
+
+        <style>
+        #caixaCadastro,
+        #caixaRecuperarSenha,
+        #alerta{
+            display:none;
+        }
+        
+        </style>
     </head>
 <body class="bg-dark">
     <main class="container mt-4">
@@ -74,7 +83,7 @@
 <section class="row mb-5" >
            <div class="col-lg-4 offset-lg-4 bg-light rounded" id="caixaCadastro">
 
-           <h2 class="text-center">Cadastro de nove usuario</h2>
+           <h2 class="text-center">Cadastro de Novo usuario</h2>
 
            <form action="#"class="p-2"id="frmCadastro">
 
@@ -100,11 +109,74 @@
           
            </div>
 </section>
+ <!-- Formulario de recuperaçao se senha -->
+<section class="row mb-5" >
+
+<div class="col-lg-4 offset-lg-4 bg-light rounded" id="caixaRecuperarSenha" ><h2 class="text-center" >Gerar nova senha </h2>
+
+<form action="#" id="formSenha"></form>
+
+<div class="from-group" ></div>
+<small class="text-muted">
+     para gerar uam nova senha, digite seu e-mail e receba as instruções
+
+</small>
+
+<div class="from-group" > 
+<input type="email" name="emailsenha" id="emailSenha" class="form-control" placeholder="E-mail" required>
+
+</div>
+
+<div class="from-group" >
+<input type="submit" value":: Enviar Email ::" id="btnEnviarEmail" class="btn btn-primary btn-block">
+
+</div>
+
+<div class="from-group float-right" >
+<a href="#" id="btnVoltar">Voltar</a>
+
+
+</div>
+</form>
+ </div>
+
+
+</section>
 
     </main>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script>
+/* JQuery */
+$(function(){
+    //troca da tela de login para recupra senha
+    $("#btnEsqueci").click(function(){
+        $("#caixaLogin").hide();
+        $("#caixaRecuperarSenha").show();
+    });
+    
+    // Voltar para a tela de login
+    $("#btnVoltar").click(function(){
+        $("#caixaRecuperarSenha").hide();
+        $("#caixaLogin").show();
+       
+    });
+    //Trocar se tela de login para cadastro de usuário
+    $("#btnCadastrar").click(function(){
+        $("#caixaLogin").hide();
+        $("#caixaCadastro").show();
+
+    });
+    //voltar para a tela de login
+
+    $("#btnJáCadastrado").click(function(){
+        $("#caixaLogin").show();
+        $("#caixaCadastro").hide();});
+});
+
+
+</script>
 </body>
 </html>
