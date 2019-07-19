@@ -5,6 +5,9 @@
  Configuramos o projeto, milestones e issues para o sistema de login. Criação do arquivo index.php e formulário de login.
  
  
-##aula02 - 19/07/2019 🚀 🌔 50 anos do homem na lua
+##aula02 - 19/07/2019
+🚀 🌔 50 anos do homem na lua
 
-Formulário de cadaastro de novo usuário. Formulário de Recuperação de Senha. Mostrar e ocultar formulários com jQuery.
+Formulário de cadaastro de novo usuário.
+Formulário de Recuperação de Senha. 
+Mostrar e ocultar formulários com jQuery.
