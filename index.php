@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
     <link rel="stylesheet" href="https://jqueryvalidation.org/files/demo/site-demos.css">
-     <title> Sistema de Login Sistema TNX </title>
+    <title> Sistema de Login Sistema TNX </title>
     <style>
         #caixaCadastro,
         #caixaRecuperarSenha,
@@ -26,7 +26,6 @@
             <div class="col-lg-4 offset-lg-4" id="alerta">
                 <div class="alert alert-success text-center">
                     <strong id="resultado">
-                        Maravilhoso mundo sem o Sublime!
                     </strong>
                 </div>
             </div>
@@ -36,7 +35,7 @@
         <section class="row mb-5">
             <div class="col-lg-4 offset-lg-4 bg-light rounded" id="caixaLogin">
                 <h2 class="text-center mt-2">Entrada no sistema</h2>
-                <form action="#" id="formLogin" class="p-2">
+                <form id="formLogin" class="p-2">
 
                     <div class="form-group">
                         <input type="text" name="nomeUsuario" id="nomeUsuario" class="form-control" placeholder="Nome do usuário" minlength="5" required>
@@ -163,6 +162,36 @@
     <script>
         /* jQuery */
         $(function() {
+            //front-end
+            //Preparaçao dos dados para envio o back-end
+            //envio dos dados formulario de login
+
+
+            $('#btnEntrar').click(function(e) {
+                let formLogin = document.querySelector("#formLogin");
+                if (formLogin.checkValidity()) {
+                    e.preventDefault(); //Não recarregar a página
+                    $.ajax({
+                        url: 'recebe.php',
+                        method: 'post',
+                        data: $('#formLogin').serialize() + '&action=login',
+                        success: function(resposta) {
+                            $('#alerta').show();
+                            $('#resultado').html( "resposta:"+resposta);
+                        }
+                    });
+                }
+            });
+
+            //Formulario de Cadastro de Usuário
+            ('btnRegistrar').click(function(e) {
+
+            });
+
+            //formulario para Mudar senha
+            ('btnenviarEmail').click(function(e) {
+
+            });
 
             //Trocar da Tela de Login para Recuperar Senha
             $("#btnEsqueci").click(function() {
@@ -209,24 +238,24 @@
         });
 
         jQuery.extend(jQuery.validator.messages, {
-    required: "Este campo &eacute; requerido.",
-    remote: "Por favor, corrija este campo.",
-    email: "Por favor, forne&ccedil;a um endere&ccedil;o eletr&ocirc;nico v&aacute;lido.",
-    url: "Por favor, forne&ccedil;a uma URL v&aacute;lida.",
-    date: "Por favor, forne&ccedil;a uma data v&aacute;lida.",
-    dateISO: "Por favor, forne&ccedil;a uma data v&aacute;lida (ISO).",
-    number: "Por favor, forne&ccedil;a um n&uacute;mero v&aacute;lido.",
-    digits: "Por favor, forne&ccedil;a somente d&iacute;gitos.",
-    creditcard: "Por favor, forne&ccedil;a um cart&atilde;o de cr&eacute;dito v&aacute;lido.",
-    equalTo: "Por favor, forne&ccedil;a o mesmo valor novamente.",
-    accept: "Por favor, forne&ccedil;a um valor com uma extens&atilde;o v&aacute;lida.",
-    maxlength: jQuery.validator.format("Por favor, forne&ccedil;a n&atilde;o mais que {0} caracteres."),
-    minlength: jQuery.validator.format("Por favor, forne&ccedil;a ao menos {0} caracteres."),
-    rangelength: jQuery.validator.format("Por favor, forne&ccedil;a um valor entre {0} e {1} caracteres de comprimento."),
-    range: jQuery.validator.format("Por favor, forne&ccedil;a um valor entre {0} e {1}."),
-    max: jQuery.validator.format("Por favor, forne&ccedil;a um valor menor ou igual a {0}."),
-    min: jQuery.validator.format("Por favor, forne&ccedil;a um valor maior ou igual a {0}.")
-});
+            required: "Este campo &eacute; requerido.",
+            remote: "Por favor, corrija este campo.",
+            email: "Por favor, forne&ccedil;a um endere&ccedil;o eletr&ocirc;nico v&aacute;lido.",
+            url: "Por favor, forne&ccedil;a uma URL v&aacute;lida.",
+            date: "Por favor, forne&ccedil;a uma data v&aacute;lida.",
+            dateISO: "Por favor, forne&ccedil;a uma data v&aacute;lida (ISO).",
+            number: "Por favor, forne&ccedil;a um n&uacute;mero v&aacute;lido.",
+            digits: "Por favor, forne&ccedil;a somente d&iacute;gitos.",
+            creditcard: "Por favor, forne&ccedil;a um cart&atilde;o de cr&eacute;dito v&aacute;lido.",
+            equalTo: "Por favor, forne&ccedil;a o mesmo valor novamente.",
+            accept: "Por favor, forne&ccedil;a um valor com uma extens&atilde;o v&aacute;lida.",
+            maxlength: jQuery.validator.format("Por favor, forne&ccedil;a n&atilde;o mais que {0} caracteres."),
+            minlength: jQuery.validator.format("Por favor, forne&ccedil;a ao menos {0} caracteres."),
+            rangelength: jQuery.validator.format("Por favor, forne&ccedil;a um valor entre {0} e {1} caracteres de comprimento."),
+            range: jQuery.validator.format("Por favor, forne&ccedil;a um valor entre {0} e {1}."),
+            max: jQuery.validator.format("Por favor, forne&ccedil;a um valor menor ou igual a {0}."),
+            min: jQuery.validator.format("Por favor, forne&ccedil;a um valor maior ou igual a {0}.")
+        });
     </script>
 </body>
 
