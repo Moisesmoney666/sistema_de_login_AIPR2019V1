@@ -15,8 +15,8 @@ if (isset($_SESSION['nomeUsuario'])) {
     $nome = $linha['nome'];
     $email = $linha['email'];
     $d = $linha['dataCriacao'];
-    $dataCriacao= $d = new DateTime($d);
-    $dataCriacao = $d->format('d/m/y H:i:S');
+    $dataCriacao = $d = new DateTime($d);
+    $dataCriacao = $d->format('d/m/y H:i:s');
 
     $imagem =$linha['imagens'];
 } else {
