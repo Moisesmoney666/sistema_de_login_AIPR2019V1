@@ -29,7 +29,7 @@ require_once 'session.php';
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">link-1</a>
+                    <a class="nav-link" href="#">Link-1</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">link-2</a>
@@ -39,9 +39,9 @@ require_once 'session.php';
                         <?= $usuario ?>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">configuraçoes</a>
-                        <a class="dropdown-item" href="sair.php">Sair</a>
-                        <a class="dropdown-item" href="#"> Link-3</a>
+                        <a class="dropdown-item" href="slider.php">Fotos</a>
+                        <a class="dropdown-item" href="#">Config</a>
+                        <a class="dropdown-item" href="sair.php"> Sair</a>
                     </div>
                 </li>
             </ul>
@@ -64,7 +64,7 @@ require_once 'session.php';
                 <h1 class="text-light">Perfil de Usuário</h1>
                 <h2 class="text-light">Nome: <?= $nome ?></h2>
                 <h2 class="text-light">E-mail: <?= $email ?></h2>
-                <h2 class="text-light">data de cadastro:  <?= $dataCriacao ?></h2>
+                <h2 class="text-light">data de cadastro: <?= $dataCriacao ?></h2>
                 <main class="container mt-4">
 
 
