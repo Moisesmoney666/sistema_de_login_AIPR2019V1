@@ -1,3 +1,41 @@
+<?php
+require_once 'configDB.php';    //Conexão Com o Banco de Dad
+if(isset($_GET['token'])&& strlen($_GET['token'])==10){
+    $token=$_GET['token'];
+    $sql = $conecta->prepare("SELECT * FROM usuario WHERE token = ? AND tempo_de_vida > now()");
+    $sql->bind_param("s", $token);
+    $sql->execute();
+    $resultado = $sql->get_result();
+    if($resultado->num_rows > 0){
+        //echo "Nova senha:" . @$_POST[senha];//
+        //Salvar a nova senha no Banco de Dados
+        if(isset($_POST['senha'])){
+            $nova_senha = sha1($_POST['senha']);
+            $confirma_senha = sha1($_POST['csenha']);
+            if($nova_senha == $confirma_senha){
+                $sql =$conecta->prepare("UPDATE usuario SET senha = ? WHERE token = ?");
+                $sql->bind_param("ss",$nova_senha,$token);
+                $sql->execute();
+                $msg ="Senha Alterada com sucesso";
+
+
+            }else{
+                $msg = "As senhas não são iguais.";
+            }
+        }
+
+    }else { //token sem vida 
+        header('location: index.php');
+        exit();
+    }
+
+}else {//Sem token ou token difernete de 10 caracteres
+    header('location:index.php');//kick da página
+    exit();
+    
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
